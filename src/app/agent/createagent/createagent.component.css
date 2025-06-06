@@ -1,0 +1,19 @@
+/* Center the Form */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Card Styling */
+  .card {
+    border-radius: 12px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Input Styling */
+  .input-group-text {
+    background: #f8f9fa;
+    border: none;
+  }
+  

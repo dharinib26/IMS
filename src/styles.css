@@ -1,0 +1,7 @@
+/* Apply background to the whole page */
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #9ccaf8; /* Light Gray */
+  }
+  

@@ -1,0 +1,42 @@
+<app-header></app-header>
+<!-- Main Wrapper with Sidebar -->
+<div class="d-flex">
+  <app-sidebar></app-sidebar> <!-- ✅ Ensures Sidebar stays visible -->
+
+  <!-- Agent Dashboard Content -->
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Agents Dashboard</h2>
+    
+    <div class="d-flex justify-content-end mb-3">
+      <button class="btn btn-primary btn-md d-flex align-items-center gap-2" [routerLink]="['/create-agent']">
+        <i class="bi bi-plus-circle" style="color: #ffffff;"></i> Create Agent
+      </button>
+    </div>
+    
+    <!-- Search Bar -->
+    <div class="input-group mb-4">
+      <input type="text" class="form-control" placeholder="Search Agent by Name" [(ngModel)]="searchText">
+      <button class="btn btn-primary" (click)="searchAgent()">🔍 Search</button>
+    </div>
+
+    <!-- Agent Cards Grid -->
+    <div class="row">
+      <div *ngFor="let agent of filteredAgents" class="col-md-4">
+        <div class="card shadow-lg agent-card">
+          <div class="card-body">
+            <h5 class="card-title">{{ agent.name }}</h5>
+            <p class="card-text">
+              <strong>ID:</strong> {{ agent.id }} <br> <!-- ✅ Display Agent ID -->
+              <strong>Contact:</strong> {{ agent.contactInfo }} <br>
+              <strong>Assigned Policies:</strong> {{ agent.assignedPolicies }}
+            </p>
+            <div class="d-flex justify-content-between">
+              <button class="btn btn-warning btn-sm" [routerLink]="['/update-agent']" [queryParams]="{agentId: agent.id}">Edit</button>
+              <button class="btn btn-danger btn-sm" (click)="confirmDelete(agent.id)" >Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

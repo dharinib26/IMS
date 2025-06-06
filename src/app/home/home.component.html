@@ -1,0 +1,77 @@
+<app-header></app-header>
+
+<!-- Page Wrapper to Separate Sidebar -->
+<div class="page-wrapper d-flex">
+  
+  <!-- Sidebar (Fixed on Left) -->
+  <app-sidebar *ngIf="isLoggedIn" class="sidebar"></app-sidebar>
+
+  <!-- Main Content (Shifts Right When Sidebar Exists) -->
+  <div class="content-wrapper">
+    <div class="hero-section text-center text-white d-flex align-items-center justify-content-center">
+      <div>
+        <h1>Secure Your Future with Confidence</h1>
+        <p class="lead">Explore our range of insurance policies tailored for every stage of life.</p>
+        <a routerLink="/policies" class="btn btn-primary btn-lg mt-3">View Policies</a>
+      </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <div class="lower-section py-5">
+      <div class="container">
+        <h3 class="text-center mb-5">Why Choose Our Insurance Services?</h3>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 text-center border-0 shadow-sm hover-shadow">
+              <div class="card-body">
+                <div class="mb-3 text-primary" style="font-size: 2.5rem;">
+                  <i class="bi bi-shield-check"></i>
+                </div>
+                <h5 class="card-title">Trusted & Secure</h5>
+                <p class="card-text">We ensure your data and policies are protected.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 text-center border-0 shadow-sm hover-shadow">
+              <div class="card-body">
+                <div class="mb-3 text-success" style="font-size: 2.5rem;">
+                  <i class="bi bi-cash-coin"></i>
+                </div>
+                <h5 class="card-title">Affordable Premiums</h5>
+                <p class="card-text">Flexible plans that fit your budget and lifestyle.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 text-center border-0 shadow-sm hover-shadow">
+              <div class="card-body">
+                <div class="mb-3 text-warning" style="font-size: 2.5rem;">
+                  <i class="bi bi-clock-history"></i>
+                </div>
+                <h5 class="card-title">Quick Claim Process</h5>
+                <p class="card-text">Fast and transparent claim settlement process.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 text-center border-0 shadow-sm hover-shadow">
+              <div class="card-body">
+                <div class="mb-3 text-danger" style="font-size: 2.5rem;">
+                  <i class="bi bi-headset"></i>
+                </div>
+                <h5 class="card-title">24/7 Support</h5>
+                <p class="card-text">Our team is always here to help you with your queries.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- Main Content Wrapper -->
+<div class="content-wrapper">
+  <router-outlet></router-outlet>  <!-- ✅ Ensures dynamic page changes -->
+</div>
+  </div>
+</div>

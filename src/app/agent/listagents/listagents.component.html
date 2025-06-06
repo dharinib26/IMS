@@ -1,0 +1,35 @@
+<app-header></app-header>
+
+<div class="container mt-4">
+
+  <!-- Add New Agent Button -->
+<div class="d-flex justify-content-end mb-3">
+  <button class="btn btn-primary btn-md d-flex align-items-center gap-2" [routerLink]="['/create-agent']">
+    <i class="bi bi-person-plus" style="color: #ffffff;"></i> Add New Agent
+  </button>
+</div>
+  <!-- Search Bar -->
+<div class="input-group mb-4">
+  <input type="text" class="form-control" placeholder="Search Agent by Name" [(ngModel)]="searchText">
+  <button class="btn btn-primary" (click)="searchAgent()">🔍 Search</button>
+</div>
+  <!-- Grid Layout for Agent Cards -->
+  <div class="row">
+    <div *ngFor="let agent of filteredAgents" class="col-md-4">
+      <div class="card shadow-lg agent-card">
+        <div class="card-body">
+          <h5 class="card-title">{{ agent.name }}</h5>
+          <p class="card-text">
+            <strong>ID:</strong> {{ agent.id }} <br>
+            <strong>Contact:</strong> {{ agent.contactInfo }} <br>
+            <strong>Assigned Policies:</strong> {{ agent.assignedPolicies }}
+          </p>
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-warning btn-sm" [routerLink]="['/update-agent']" [queryParams]="{agentId: agent.id}">Edit</button>
+            <button class="btn btn-danger btn-sm" [routerLink]="['/delete-agent']" [queryParams]="{agentId: agent.id}">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

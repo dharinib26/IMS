@@ -1,0 +1,25 @@
+<app-header></app-header>
+
+<div class="container d-flex justify-content-center mt-5">
+  <div class="card shadow-lg p-4" style="width: 45%;">
+    <h2 class="text-center mb-4">Find Agent</h2>
+
+    <form #searchForm="ngForm" (ngSubmit)="getAgentById(searchForm)">
+      <div class="mb-3">
+        <label for="agentId" class="form-label">Enter Agent ID</label>
+        <input ngModel name="agentId" type="number" class="form-control" id="agentId" required/>
+      </div>
+
+      <div class="d-grid mt-4">
+        <button type="submit" class="btn btn-primary btn-lg">Search Agent</button>
+      </div>
+    </form>
+
+    <div *ngIf="agent" class="mt-4">
+      <h4>Agent Details</h4>
+      <p><strong>Name:</strong> {{ agent.name }}</p>
+      <p><strong>Contact Info:</strong> {{ agent.contactInfo }}</p>
+      <p><strong>Assigned Policies:</strong> {{ agent.assignedPolicies }}</p>
+    </div>
+  </div>
+</div>

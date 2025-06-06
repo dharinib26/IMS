@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+<div class="container d-flex justify-content-center mt-5">
+  <div class="card shadow-lg p-4" style="width: 50%; max-width: 600px;">
+    <h2 class="text-center mb-4">Update Agent</h2>
+
+    <form *ngIf="agent" #updateForm="ngForm" (ngSubmit)="updateAgent(updateForm)">
+      <div class="mb-4">
+        <h4 class="text-center">Edit Agent Information</h4>
+
+        <div class="mb-3">
+          <label class="form-label">Agent Name</label>
+          <input ngModel name="name" [ngModel]="agent.name" type="text" class="form-control" required minlength="3" maxlength="50"/>
+          <div *ngIf="updateForm.controls['name']?.invalid && updateForm.controls['name']?.touched" class="text-danger">
+            Name must be between 3 and 50 characters.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Contact Info (Phone Number)</label>
+          <input ngModel name="contactInfo" [ngModel]="agent.contactInfo" type="text" class="form-control" required pattern="^[0-9]{10}$"/>
+          <div *ngIf="updateForm.controls['contactInfo']?.invalid && updateForm.controls['contactInfo']?.touched" class="text-danger">
+            Enter a valid 10-digit phone number.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Assigned Policies</label>
+          <textarea ngModel name="assignedPolicies" [ngModel]="agent.assignedPolicies" class="form-control" rows="2" required></textarea>
+          <div *ngIf="updateForm.controls['assignedPolicies']?.invalid && updateForm.controls['assignedPolicies']?.touched" class="text-danger">
+            This field is required.
+          </div>
+        </div>
+
+        <div class="d-grid mt-4">
+          <button type="submit" class="btn btn-success btn-lg" [disabled]="updateForm.invalid">Update Agent</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

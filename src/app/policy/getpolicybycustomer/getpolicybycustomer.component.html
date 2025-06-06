@@ -1,0 +1,48 @@
+<app-header></app-header>
+
+<div class="container d-flex justify-content-center mt-5">
+  <div class="card shadow-lg p-4" style="width: 45%;">
+    <h2 class="text-center mb-4">Find Policies By Customer ID</h2>
+
+    <form #searchForm="ngForm" (ngSubmit)="getPoliciesByCustomer(searchForm)">
+      <div class="mb-3">
+        <label for="customerId" class="form-label">Enter Customer ID</label>
+        <input ngModel name="customerId" type="number" class="form-control" id="customerId" required/>
+      </div>
+
+      <div class="d-grid mt-4">
+        <button type="submit" class="btn btn-primary btn-lg">Search Policies</button>
+      </div>
+    </form>
+
+    <!-- ✅ Insert UI update here -->
+    <p *ngIf="!searched" class="text-muted mt-4">Enter Customer ID to search policies.</p>
+    <p *ngIf="searched && policies.length === 0" class="text-danger mt-4">No policies found for this customer ID.</p>
+
+    <div *ngIf="policies.length > 0" class="mt-4">
+      <h4>Policies Linked to Customer ID {{ customerId }}</h4>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Premium</th>
+            <th>Coverage Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let policy of policies">
+            <td>{{ policy.id }}</td>
+            <td>{{ policy.name }}</td>
+            <td>{{ policy.policyType }}</td>
+            <td>{{ policy.description }}</td>
+            <td>₹{{ policy.premium }}</td>
+            <td>₹{{ policy.coverageAmount }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

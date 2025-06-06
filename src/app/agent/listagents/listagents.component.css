@@ -1,0 +1,7 @@
+.search-input {
+    width: 60%; /* ✅ Limits width to 60% of the container */
+    max-width: 400px; /* ✅ Prevents it from becoming too broad */
+    padding: 8px;
+    border-radius: 6px;
+  }
+  

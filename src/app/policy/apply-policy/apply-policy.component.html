@@ -1,0 +1,58 @@
+<app-header></app-header>
+
+<div class="container mt-4">
+  <h2 class="text-center">Policy Application {{ applyForm.value.policyName }}</h2>
+
+  <form [formGroup]="applyForm" (ngSubmit)="onSubmit()">
+    <!-- Full Name -->
+<div class="mb-3">
+    <label for="customerName" class="form-label">Full Name</label>
+    <input type="text" id="customerName" class="form-control" formControlName="customerName" required />
+    <small *ngIf="submitted && applyForm.controls['customerName'].hasError('required')" class="text-danger">
+      Name is required.
+    </small>
+  </div>
+  
+  <!-- Email -->
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" id="email" class="form-control" formControlName="email" required />
+    <small *ngIf="submitted && applyForm.controls['email'].hasError('required')" class="text-danger">
+      Email is required.
+    </small>
+    <small *ngIf="submitted && applyForm.controls['email'].hasError('email')" class="text-danger">
+      Invalid email format.
+    </small>
+  </div>
+  
+  <!-- Contact Number -->
+  <div class="mb-3">
+    <label for="contact" class="form-label">Contact Number</label>
+    <input type="text" id="contact" class="form-control" formControlName="contact" required />
+    <small *ngIf="submitted && applyForm.controls['contact'].hasError('required')" class="text-danger">
+      Contact number is required.
+    </small>
+    <small *ngIf="submitted && applyForm.controls['contact'].hasError('pattern')" class="text-danger">
+      Contact must be 10 digits.
+    </small>
+  </div>
+  
+
+    <div class="mb-3">
+      <label for="policyType" class="form-label">Policy Type</label>
+      <input type="text" id="policyType" class="form-control" formControlName="policyType" [disabled]="true" />
+    </div>
+
+    <div class="mb-3">
+      <label for="premium" class="form-label">Premium</label>
+      <input type="text" id="premium" class="form-control" formControlName="premium" [disabled]="true" />
+    </div>
+
+    <div class="mb-3">
+      <label for="coverageAmount" class="form-label">Coverage Amount</label>
+      <input type="text" id="coverageAmount" class="form-control" formControlName="coverageAmount" [disabled]="true" />
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">Submit Application</button>
+  </form>
+</div>

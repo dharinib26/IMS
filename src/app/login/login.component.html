@@ -1,0 +1,56 @@
+<app-header></app-header>
+<section class="h-100 gradient-form"> 
+  <div class="container content-container">
+    <div class="container py-0 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-xl-10">
+          <div class="card rounded-3 text-black" >
+            <div class="row g-0" >
+              <!-- Left Panel -->
+              <div class="col-lg-6 left-panel d-flex align-items-center">
+                <div class="card-body mx-md-4 w-100">
+                  <div class="text-center">
+                    <img src="./assets/logo2.jpg" style="width: 175px;" alt="logo">
+                    <h4 class="mt-1 mb-4 pb-1">Insurance Management</h4>
+                  </div>
+
+                  <form #loginForm="ngForm" (ngSubmit)="validateL(loginForm)">
+                    <p>Please login to your account</p>
+  
+                    <div class="form-outline mb-4">
+                    <input type="username" id="form2Example11" class="form-control" placeholder="username" ngModel name="username" />
+                    </div>
+  
+                    <div class="form-outline mb-4">
+                      <input type="password" id="form2Example22" class="form-control" placeholder="password" ngModel name="password" />
+                    </div>
+  
+                    <div class="text-center pt-1 mb-4 pb-1">
+                      <button class="btn btn-custom-gradient btn-block fa-lg mb-3" type="submit" style="height: 35px;width:130px">LogIn</button><br>
+                      
+                    </div>
+  
+                    <div class="d-flex align-items-center justify-content-center pb-4">
+                      <p class="mb-0 me-2">Don't have an account?</p>
+                      <button type="button" class="btn btn-outline-danger" routerLink="/register">Create new</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+  
+              <!-- Right Panel -->
+              <div class="col-lg-5 d-flex  justify-content-center">
+               <div class="text-white px-3 py-4 p-md-5 mx-md-1 text-center">
+                  
+                  <img src="./assets/login.jpg" style="width: 430px;height: 480px;" alt="Login insurance image">
+                </div>
+              </div>
+            </div> <!-- End row -->
+          </div> <!-- End card -->
+        </div> <!-- End col-xl-10 -->
+      </div> <!-- End row -->
+    </div> <!-- End container --> 
+  </div> 
+</section>
+
+  

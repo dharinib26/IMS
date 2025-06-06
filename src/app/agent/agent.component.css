@@ -1,0 +1,67 @@
+/* Background Styling */
+body {
+  background: #e3ecf5;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Apply Background to Container */
+.container {
+  background-color: #9ccaf8;
+  padding: 20px;
+  border-radius: 8px;
+  margin-left: 260px; /* ✅ Adjusts position so it doesn't overlap sidebar */
+  width: calc(100% - 260px); /* ✅ Keeps correct spacing */
+}
+
+/* Agent Card Styling */
+.agent-card {
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  margin-bottom: 15px; /* ✅ Adds vertical spacing between rows */
+  padding: 15px;
+  height: 260px; /* ✅ Ensures uniform card size */
+  background: #ffffff;
+}
+
+/* Hover Effect */
+.agent-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Fixing row spacing */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; /* ✅ Ensures proper spacing between columns */
+  justify-content: center;
+}
+
+/* Additional row spacing to prevent overlap */
+.row > * {
+  margin-top: 20px; /* ✅ Adds space between row elements */
+}
+
+/* Button Styling */
+.btn-warning {
+  background-color: #f0ad4e;
+  border: none;
+}
+
+.btn-danger {
+  background-color: #d9534f;
+  border: none;
+}
+
+/* Create Agent Button */
+.btn-primary {
+  background-color: #357ab8;
+  border: none;
+  font-size: 14px;
+  padding: 8px 14px;
+}
+
+.btn-primary:hover {
+  background-color: #2c6e9f;
+}

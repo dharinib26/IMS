@@ -1,0 +1,70 @@
+<app-header></app-header>
+
+<div class="container mt-5">
+  <div class="card shadow-lg p-4" style="max-width: 600px; margin: auto;">
+    <h2 class="text-center mb-4">Create a New Policy</h2>
+
+    <form [formGroup]="policyForm" (ngSubmit)="onSubmit()">
+      <!-- Customer Selection -->
+      <div class="mb-3">
+        <label for="customerId" class="form-label">Select Customer</label>
+        <select id="customerId" class="form-select" formControlName="customerId">
+          <option value="">-- Select a Customer --</option>
+          <option *ngFor="let customer of customers" [value]="customer.id">
+            {{ customer.name }} (ID: {{ customer.id }})
+          </option>
+        </select>
+        <div *ngIf="submitted && f['customerId'].errors?.['required']" class="text-danger">
+          Customer selection is required.
+        </div>
+      </div>
+
+      <!-- Policy Name -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Policy Name</label>
+        <input type="text" id="name" class="form-control" formControlName="name" placeholder="Enter policy name" />
+        <div *ngIf="submitted && f['name'].errors" class="text-danger">
+          <div *ngIf="f['name'].errors?.['required']">Policy name is required</div>
+          <div *ngIf="f['name'].errors?.['minlength']">Policy name must be at least 3 characters</div>
+        </div>
+      </div>
+
+      <!-- Policy Type Dropdown -->
+      <div class="mb-3">
+        <label for="type" class="form-label">Policy Type</label>
+        <select id="type" class="form-select" formControlName="type" (change)="onPolicyTypeChange($event)">
+          <option value="">Select policy type</option>
+          <option *ngFor="let policy of availablePolicies" [value]="policy.name">
+            {{ policy.name }}
+          </option>
+        </select>
+        <div *ngIf="submitted && f['type'].errors?.['required']" class="text-danger">
+          Policy type is required.
+        </div>
+      </div>
+
+      <!-- Premium & Coverage (Auto-filled) -->
+      <div class="mb-3">
+        <label for="premium" class="form-label">Premium Amount</label>
+        <input type="text" id="premium" class="form-control" formControlName="premium"
+          placeholder="Auto-filled based on policy type" [disabled]="true" />
+      </div>
+
+      <div class="mb-3">
+        <label for="coverageAmount" class="form-label">Coverage Amount</label>
+        <input type="text" id="coverageAmount" class="form-control" formControlName="coverageAmount"
+          placeholder="Auto-filled based on policy type" [disabled]="true" />
+      </div>
+
+      <!-- Description -->
+      <div class="mb-3">
+        <label for="description" class="form-label">Description (Optional)</label>
+        <textarea id="description" class="form-control" formControlName="description" rows="3"></textarea>
+      </div>
+
+      <div class="d-grid mt-4">
+        <button type="submit" class="btn btn-primary btn-lg">Create Policy</button>
+      </div>
+    </form>
+  </div>
+</div>

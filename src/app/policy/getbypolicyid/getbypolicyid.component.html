@@ -1,0 +1,29 @@
+<app-header></app-header>
+
+<div class="container d-flex justify-content-center mt-5">
+  <div class="card shadow-lg p-4" style="width: 45%;">
+    <h2 class="text-center mb-4">Find Policy</h2>
+
+    <form #searchForm="ngForm" (ngSubmit)="getPolicyById(searchForm)">
+      <div class="mb-3">
+        <label for="policyId" class="form-label">Enter Policy ID</label>
+        <input ngModel name="policyId" type="number" class="form-control" id="policyId" required/>
+      </div>
+
+      <div class="d-grid mt-4">
+        <button type="submit" class="btn btn-primary btn-lg">Search Policy</button>
+      </div>
+    </form>
+
+    <div *ngIf="policy" class="mt-4">
+      <h4>Policy Details</h4>
+      <p><strong>Name:</strong> {{ policy.name }}</p>
+      <p><strong>Type:</strong> {{ policy.policyType }}</p>
+      <p><strong>Description:</strong> {{ policy.description }}</p>
+      <p><strong>Premium:</strong> ₹{{ policy.premium }}</p>
+      <p><strong>Coverage Amount:</strong> ₹{{ policy.coverageAmount }}</p>
+      <p><strong>Customer ID:</strong> {{ policy.customerId }}</p>
+      <p><strong>Agent ID:</strong> {{ policy.agentId }}</p>
+    </div>
+  </div>
+</div>

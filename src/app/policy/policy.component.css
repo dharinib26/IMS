@@ -1,0 +1,42 @@
+.card {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  .policy-card {
+    border-radius: 10px;
+    transition: transform 0.2s;
+  }
+  
+  .policy-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .spinner-border {
+    width: 3rem;
+    height: 3rem;
+  }
+  .d-flex {
+    display: flex;
+  }
+  
+  .content-container {
+    margin-left: 250px; /* Adjust based on sidebar width */
+    width: calc(100% - 250px);
+    margin-top: 70px; /* ✅ Push content down to avoid overlapping navbar */
+  }
+  
+  .sidebar-container {
+    width: 250px; /* Adjust as needed */
+    position: fixed;
+    height: 100vh;
+    background: #f8f9fa;
+  }
+  

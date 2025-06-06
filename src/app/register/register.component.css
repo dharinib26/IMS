@@ -1,0 +1,28 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  /* background: url('/assets/bg3.jpg') no-repeat center center fixed; */
+  background-size: cover;
+  background-color:#76b0f6;
+}
+
+.card .col-md-6.p-5 {
+  background: linear-gradient(to bottom right, #6f9eeb, #ebedee);
+}
+
+.card {
+  background-color: #f1e6e6;
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: #4a90e2;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #357ab8;
+}

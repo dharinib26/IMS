@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4">All Claims</h2>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Policy ID</th>
+        <th>Customer ID</th>
+        <th>Claim Amount</th>
+        <th>Claim Reason</th>
+        <th>Claim Date</th>
+        <th>Claim Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let claim of claims">
+        <td>{{ claim.id }}</td>
+        <td>{{ claim.policyId }}</td>
+        <td>{{ claim.customerId }}</td>
+        <td>₹{{ claim.claimAmount }}</td>
+        <td>{{ claim.claimReason }}</td>
+        <td>{{ claim.claimDate }}</td>
+        <td>{{ claim.claimStatus }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

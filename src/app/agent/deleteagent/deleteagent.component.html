@@ -1,0 +1,15 @@
+<app-header></app-header>
+
+<div class="container d-flex justify-content-center mt-5">
+  <div class="card shadow-lg p-4 text-center" style="width: 40%;">
+    <h2 class="text-danger mb-4">Delete Agent</h2>
+    <p *ngIf="agentId">
+      Are you sure you want to delete Agent with ID: <strong>{{ agentId }}</strong>?
+    </p>
+    <div class="d-grid mt-4">
+      <button type="button" class="btn btn-danger btn-lg" (click)="deleteAgent()">
+        Delete Agent
+      </button>
+    </div>
+  </div>
+</div>

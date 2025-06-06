@@ -1,0 +1,32 @@
+<app-header></app-header>
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4">All Policies</h2>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Premium</th>
+        <th>Coverage Amount</th>
+        <th>Customer ID</th>
+        <th>Agent ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let policy of policies">
+        <td>{{ policy.id }}</td>
+        <td>{{ policy.name }}</td>
+        <td>{{ policy.policyType }}</td>
+        <td>{{ policy.description }}</td>
+        <td>₹{{ policy.premium }}</td>
+        <td>₹{{ policy.coverageAmount }}</td>
+        <td>{{ policy.customerId }}</td>
+        <td>{{ policy.agentId }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

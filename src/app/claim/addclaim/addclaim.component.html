@@ -1,0 +1,48 @@
+<app-header></app-header>
+
+<div class="container d-flex justify-content-center mt-5">
+  <div class="card shadow-lg p-4" style="width: 45%;">
+    <h2 class="text-center mb-4">Submit a Claim</h2>
+
+    <form #claimForm="ngForm" (ngSubmit)="createClaim(claimForm)">
+      <div class="mb-3">
+        <label for="policyId" class="form-label">Policy ID</label>
+        <input ngModel name="policyId" type="number" class="form-control" id="policyId" required/>
+      </div>
+
+      <div class="mb-3">
+        <label for="customerId" class="form-label">Customer ID</label>
+        <input ngModel name="customerId" type="number" class="form-control" id="customerId" required/>
+      </div>
+
+      <div class="mb-3">
+        <label for="claimAmount" class="form-label">Claim Amount</label>
+        <input ngModel name="claimAmount" type="number" class="form-control" id="claimAmount" min="20000" required/>
+      </div>
+
+      <div class="mb-3">
+        <label for="claimReason" class="form-label">Claim Reason</label>
+        <textarea ngModel name="claimReason" class="form-control" id="claimReason" rows="2" required></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="claimDate" class="form-label">Claim Date</label>
+        <input ngModel name="claimDate" type="date" class="form-control" id="claimDate" required/>
+      </div>
+
+      <!-- <div class="mb-3">
+        <label for="claimStatus" class="form-label">Claim Status</label>
+        <select ngModel name="claimStatus" class="form-control" id="claimStatus" required>
+          <option value="Filed">Filed</option>
+          <option value="UnderReview">Under Review</option>
+          <option value="Approved">Approved</option>
+          <option value="Rejected">Rejected</option>
+        </select>
+      </div> -->
+
+      <div class="d-grid mt-4">
+        <button type="submit" class="btn btn-primary btn-lg">Submit Claim</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+<div class="container d-flex justify-content-center mt-5">
+  <div class="card shadow-lg p-4" style="width: 45%;">
+    <h2 class="text-center mb-4">Find Claim</h2>
+
+    <form #searchForm="ngForm" (ngSubmit)="getClaimById(searchForm)">
+      <div class="mb-3">
+        <label for="claimId" class="form-label">Enter Claim ID</label>
+        <input ngModel name="claimId" type="number" class="form-control" id="claimId" required/>
+      </div>
+
+      <div class="d-grid mt-4">
+        <button type="submit" class="btn btn-primary btn-lg">Search Claim</button>
+      </div>
+    </form>
+
+    <div *ngIf="claim" class="mt-4">
+      <h4>Claim Details</h4>
+      <p><strong>Policy ID:</strong> {{ claim.policyId }}</p>
+      <p><strong>Customer ID:</strong> {{ claim.customerId }}</p>
+      <p><strong>Claim Amount:</strong> ₹{{ claim.claimAmount }}</p>
+      <p><strong>Claim Reason:</strong> {{ claim.claimReason }}</p>
+      <p><strong>Claim Date:</strong> {{ claim.claimDate }}</p>
+      <p><strong>Claim Status:</strong> {{ claim.claimStatus }}</p>
+    </div>
+  </div>
+</div>

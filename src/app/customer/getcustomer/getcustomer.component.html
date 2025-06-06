@@ -1,0 +1,22 @@
+<form #searchForm="ngForm" (ngSubmit)="getCustomerById(searchForm)">
+  <div class="mb-3">
+    <label for="customerId" class="form-label">Enter Customer ID</label>
+    <input 
+      ngModel name="customerId" 
+      type="number" 
+      class="form-control" 
+      id="customerId" 
+      required 
+      min="1" placeholder="Enter a valid ID"
+    />
+    <div *ngIf="searchForm.controls['customerId']?.invalid && searchForm.controls['customerId']?.touched" class="text-danger">
+      Customer ID is required!
+    </div>
+  </div>
+
+  <div class="d-grid mt-4">
+    <button type="submit" class="btn btn-primary btn-lg" [disabled]="searchForm.invalid">
+      {{ isLoading ? 'Searching...' : 'Search Customer' }}
+    </button>
+  </div>
+</form>

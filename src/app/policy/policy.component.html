@@ -1,0 +1,57 @@
+<app-header></app-header>
+
+<div class="d-flex">
+  <!-- Sidebar (Remains Fixed) -->
+  <div class="sidebar-container">
+    <app-sidebar></app-sidebar>
+  </div>
+
+  <!-- Main Content (Policy Dashboard) -->
+  <div class="content-container flex-grow-1 p-4">
+    <h2 class="text-center mb-4">Available Policies</h2>
+
+    <!-- Create Policy Button -->
+    <div class="d-flex justify-content-end mb-3">
+      <a class="btn btn-primary btn-md" routerLink="/create-policy">
+        ➕ Create Policy
+      </a>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="input-group mb-4">
+      <input type="text" class="form-control" placeholder="Search Policy..." [(ngModel)]="searchText">
+      <button class="btn btn-primary" (click)="searchPolicy()">🔍 Search</button>
+    </div>
+
+    <!-- Loading state -->
+    <div *ngIf="isLoading" class="text-center mt-3">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p>Fetching policies...</p>
+    </div>
+
+    <!-- Policy Cards -->
+    <div *ngIf="!isLoading && availablePolicies.length > 0" class="row">
+      <div *ngFor="let policy of availablePolicies" class="col-md-4 mb-3">
+        <div class="card shadow-lg policy-card">
+          <div class="card-body">
+            <h5 class="card-title">{{ policy.name }}</h5>
+            <p><strong>Description:</strong> {{ policy.description || 'No description available' }}</p>
+            <p><strong>Premium:</strong> ₹{{ policy.premium }}</p>
+            <p><strong>Coverage:</strong> ₹{{ policy.coverageAmount }}</p>
+            <button class="btn btn-success btn-sm" [routerLink]="['/apply-policy', policy.id]" >
+              📝 Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="!isLoading && availablePolicies.length === 0" class="text-center mt-3">
+      <h5>No available policies found.</h5>
+      <p>Try modifying your search or check with the admin.</p>
+    </div>
+  </div>
+</div>

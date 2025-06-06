@@ -1,0 +1,27 @@
+<app-header></app-header>
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4">All Customers</h2>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Address</th> <!-- ✅ Added address -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of customers">
+        <td>{{ customer.id }}</td>
+        <td>{{ customer.name }}</td>
+        <td>{{ customer.email }}</td>
+        <td>{{ customer.phoneNumber }}</td> <!-- ✅ Ensure this matches the backend field -->
+        <td>{{ customer.address }}</td> <!-- ✅ Added address -->
+      </tr>
+    </tbody>
+  </table>
+  
+</div>

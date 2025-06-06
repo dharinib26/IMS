@@ -1,0 +1,43 @@
+<app-header></app-header>
+
+<div class="container d-flex justify-content-center mt-5">
+  <div class="card shadow-lg p-4" style="width: 50%; max-width: 600px;">
+    <h2 class="text-center mb-4">Create New Agent</h2>
+
+    <form #agentForm="ngForm" (ngSubmit)="createAgent(agentForm)">
+      <div class="mb-3">
+        <label class="form-label">Agent Name</label>
+        <div class="input-group">
+          <span class="input-group-text">🧑</span>
+          <input ngModel name="name" type="text" class="form-control" required minlength="3" maxlength="50"/>
+        </div>
+        <div *ngIf="agentForm.controls['name']?.invalid && agentForm.controls['name']?.touched" class="text-danger">
+          Name must be between 3 and 50 characters.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Contact Info (Phone Number)</label>
+        <div class="input-group">
+          <span class="input-group-text">📞</span>
+          <input ngModel name="contactInfo" type="text" class="form-control" required pattern="^[0-9]{10}$"/>
+        </div>
+        <div *ngIf="agentForm.controls['contactInfo']?.invalid && agentForm.controls['contactInfo']?.touched" class="text-danger">
+          Enter a valid 10-digit phone number.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Assigned Policies</label>
+        <textarea ngModel name="assignedPolicies" class="form-control" rows="2" required></textarea>
+        <div *ngIf="agentForm.controls['assignedPolicies']?.invalid && agentForm.controls['assignedPolicies']?.touched" class="text-danger">
+          This field is required.
+        </div>
+      </div>
+
+      <div class="d-grid mt-4">
+        <button type="submit" class="btn btn-success btn-lg" [disabled]="agentForm.invalid">✅ Create Agent</button>
+      </div>
+    </form>
+  </div>
+</div>

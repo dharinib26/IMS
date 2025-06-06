@@ -1,0 +1,55 @@
+<app-header></app-header>
+
+<div class="container d-flex justify-content-center mt-5">
+  <div class="card shadow-lg p-4" style="width: 45%;">
+    <h2 class="text-center mb-4">Update Policy</h2>
+
+    <!-- Fetch Policy by ID -->
+    <form #searchForm="ngForm" (ngSubmit)="fetchPolicyDetails(searchForm)">
+      <div class="mb-3">
+        <label for="policyId" class="form-label">Enter Policy ID</label>
+        <input ngModel name="policyId" type="number" class="form-control" id="policyId" required/>
+      </div>
+
+      <div class="d-grid mt-4">
+        <button type="submit" class="btn btn-primary btn-lg">Fetch Details</button>
+      </div>
+    </form>
+
+    <!-- Update Policy Form -->
+    <form *ngIf="policy" #updateForm="ngForm" (ngSubmit)="updatePolicy(updateForm)">
+      <div class="mt-4">
+        <h4>Edit Policy Information</h4>
+
+        <div class="mb-3">
+          <label for="name" class="form-label">Policy Name</label>
+          <input ngModel name="name" [ngModel]="policy.name" type="text" class="form-control" id="name" required/>
+        </div>
+
+        <div class="mb-3">
+          <label for="policyType" class="form-label">Policy Type</label>
+          <input ngModel name="policyType" [ngModel]="policy.policyType" type="text" class="form-control" id="policyType"/>
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea ngModel name="description" [ngModel]="policy.description" class="form-control" id="description" rows="2" required></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="premium" class="form-label">Premium Amount</label>
+          <input ngModel name="premium" [ngModel]="policy.premium" type="number" class="form-control" id="premium" required/>
+        </div>
+
+        <div class="mb-3">
+          <label for="coverageAmount" class="form-label">Coverage Amount</label>
+          <input ngModel name="coverageAmount" [ngModel]="policy.coverageAmount" type="number" class="form-control" id="coverageAmount"/>
+        </div>
+
+        <div class="d-grid mt-4">
+          <button type="submit" class="btn btn-success btn-lg">Update Policy</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

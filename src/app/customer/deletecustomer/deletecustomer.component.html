@@ -1,0 +1,19 @@
+<app-header></app-header>
+
+<div class="container d-flex justify-content-center mt-5">
+  <div class="card shadow-lg p-4 text-center" style="width: 40%;">
+    <h2 class="text-danger mb-4">Delete Customer</h2>
+
+    <form #deleteForm="ngForm" (ngSubmit)="deleteCustomer(deleteForm)">
+      <div class="mb-3">
+        <label for="customerId" class="form-label">Customer ID</label>
+        <input ngModel name="customerId" type="number" class="form-control" id="customerId" required/>
+      </div>
+
+      <div class="d-grid mt-4">
+        <button type="submit" class="btn btn-danger btn-lg">Delete Customer</button>
+      </div>
+    </form>
+  </div>
+</div>
+ 

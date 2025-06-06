@@ -1,0 +1,27 @@
+<app-header></app-header>
+
+<div class="container d-flex justify-content-center mt-5">
+  <div class="card shadow-lg p-4" style="width: 45%;">
+    <h2 class="text-center mb-4">Update Claim Status</h2>
+
+    <form #updateForm="ngForm" (ngSubmit)="updateStatus(updateForm)">
+      <div class="mb-3">
+        <label for="claimId" class="form-label">Claim ID</label>
+        <input ngModel name="claimId" type="number" class="form-control" id="claimId" required/>
+      </div>
+
+      <div class="mb-3">
+        <label for="claimStatus" class="form-label">New Claim Status</label>
+        <select ngModel name="claimStatus" class="form-control" id="claimStatus" required>
+          <option value="Pending">Under Review</option>
+          <option value="Approved">Approved</option>
+          <option value="Rejected">Rejected</option>
+        </select>
+      </div>
+
+      <div class="d-grid mt-4">
+        <button type="submit" class="btn btn-success btn-lg">Update Status</button>
+      </div>
+    </form>
+  </div>
+</div>
