@@ -3,7 +3,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { LoginService, User } from '../login.service';
 import { HeaderComponent } from '../header/header.component';
-import { jwtDecode } from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode'; // ✅ Corrected import
 
 @Component({
   selector: 'login',
@@ -21,24 +21,32 @@ export class LoginComponent {
     console.log(username);
     const user = new User(username, password);
 
-    this.loginService.login(user).subscribe(response => {
-      console.log("Response from backend", response);
-      localStorage.setItem("token", response); // ✅ Store JWT token
-
-      // ✅ Extract user role from JWT and store it
+    this.loginService.login(user).subscribe((response: { token: string }) => {
+      console.log("Raw Response from Backend:", response); // ✅ Debugging log
+    
+      localStorage.setItem("token", response.token); // ✅ Store JWT token
+    
       let token = localStorage.getItem("token");
       if (token) {
         let decodedToken: any = jwtDecode(token);
-        localStorage.setItem("userRole", decodedToken.roles); // ✅ Store role
+        console.log("Decoded Token:", decodedToken); // ✅ Debugging log
+    
+        if (decodedToken.roles) {
+          localStorage.setItem("userRole", decodedToken.roles); // ✅ Store role
+        } else {
+          console.error("Role not found in token!");
+        }
+    
         localStorage.setItem("userId", decodedToken.id); // ✅ Store user ID
-        console.log("User Role:", decodedToken.roles);
+        console.log("User Role:", localStorage.getItem("userRole"));
       }
-
+    
       alert("Logged in successfully");
       this.router.navigate(['home']).then(() => {
         window.location.reload(); // ✅ Refresh navbar to reflect login state
       });
-    });
+    });    
+    
   }
 
   loginUser() {
